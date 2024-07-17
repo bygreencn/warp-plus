@@ -11,6 +11,12 @@ import (
 	"time"
 )
 
+func RandomSeed() int64 {
+	var seed = rand.Int63()
+	seed ^= time.Now().UnixNano()
+	return seed
+}
+
 // RandomIPFromPrefix returns a random IP from the provided CIDR prefix.
 // Supports IPv4 and IPv6. Does not support mapped inputs.
 func RandomIPFromPrefix(cidr netip.Prefix) (netip.Addr, error) {
@@ -25,7 +31,7 @@ func RandomIPFromPrefix(cidr netip.Prefix) (netip.Addr, error) {
 	}
 
 	// Initialise rand number generator
-	rng := rand.New(rand.NewSource(time.Now().UnixNano()))
+	rng := rand.New(rand.NewSource(RandomSeed()))
 
 	// Find the bit length of the Host portion of the provided CIDR
 	// prefix

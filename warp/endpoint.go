@@ -28,7 +28,7 @@ func RandomWarpPrefix(v4, v6 bool) netip.Prefix {
 	}
 
 	cidrs := WarpPrefixes()
-	rng := rand.New(rand.NewSource(time.Now().UnixNano()))
+	rng := rand.New(rand.NewSource(iputils.RandomSeed()))
 	for {
 		cidr := cidrs[rng.Intn(len(cidrs))]
 
