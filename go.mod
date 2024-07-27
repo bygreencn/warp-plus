@@ -1,8 +1,8 @@
 module github.com/bepass-org/warp-plus
 
-go 1.22.0
+go 1.21.4
 
-toolchain go1.22.1
+
 
 require (
 	github.com/Psiphon-Labs/psiphon-tunnel-core v1.0.11-0.20240424194431-3612a5a6fb4c
